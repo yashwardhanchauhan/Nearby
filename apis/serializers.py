@@ -1,6 +1,6 @@
 from rest_framework import serializers
-from . import models
-from django.contrib.auth.models import User,auth
+from django.contrib.auth.models import User
+
 class signupSerializer(serializers.ModelSerializer):
     class Meta:
         model =User
@@ -9,4 +9,4 @@ class signupSerializer(serializers.ModelSerializer):
 class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model= User
-        fields = ("email","username")
+        fields = ('username','email')

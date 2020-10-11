@@ -19,12 +19,12 @@ class Login(APIView):
         try:
             email_id=request.POST.get("email_id")
             password=request.POST.get("password")
-            qs=User.objects.filter(email=email_id,password=password).distinct()
+            qs=User.objects.filter(email=email_id,password=password)
             serializer=serializers.LoginSerializer(qs,many=True)
-            if serializer is not None:
+            if len(qs)!=0:
                 response={'status': status.HTTP_200_OK,'message':'Login successfull','data':serializer.data }
             else:
-                response = {'status': status.HTTP_204_NO_CONTENT,'message':'Email Id and Password doesnt match','data':serializer.data }
+                response = {'status': status.HTTP_204_NO_CONTENT,'message':'Email Id and Password doesnt match' }
             return Response(response, status=response['status'])
         except:
             response = {'status': status.HTTP_400_BAD_REQUEST ,'message':'Bad Request'}
