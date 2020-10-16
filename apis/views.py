@@ -55,7 +55,7 @@ class Search(APIView):
             return Response(response, status=response['status'])
             
 def send_mail(send_to, subject, text):
-    send_from = 'yashwardhan75@gmail.com'
+    send_from = 'sender mail'
     #assert isinstance(send_to, list)
 
     msg = MIMEMultipart()
@@ -69,7 +69,7 @@ def send_mail(send_to, subject, text):
 
     server = smtplib.SMTP('smtp.gmail.com:587')
     server.starttls()
-    server.login(send_from, "Y@sh6april99")
+    server.login(send_from, "senders mail password")
     text = msg.as_string()
     server.sendmail(send_from, send_to, text)
     server.quit()
